@@ -1,133 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Food4U - Fresh & Fast Food Delivery</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Food4U - Order Food Online</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f4f4f4;
+}
 
-        body {
-            background: #f8f8f8;
-        }
+header{
+    background:#d70f64;
+    color:white;
+    padding:15px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
 
-        header {
-            background: #ff4d4d;
-            color: white;
-            padding: 15px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+header h1{
+    margin:0;
+}
 
-        header h1 {
-            font-size: 24px;
-        }
+nav button{
+    background:white;
+    color:#d70f64;
+    border:none;
+    padding:8px 15px;
+    margin-left:10px;
+    border-radius:5px;
+    cursor:pointer;
+    font-weight:bold;
+}
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: bold;
-        }
+.container{
+    padding:30px;
+}
 
-        .hero {
-            height: 90vh;
-            background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836') no-repeat center center/cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
+.filters{
+    text-align:center;
+    margin-bottom:20px;
+}
 
-        .hero-content {
-            background: rgba(0,0,0,0.6);
-            padding: 40px;
-            border-radius: 10px;
-        }
+.filters button{
+    padding:10px 20px;
+    margin:5px;
+    border:none;
+    border-radius:20px;
+    cursor:pointer;
+    background:#ddd;
+}
 
-        .hero h2 {
-            font-size: 40px;
-            margin-bottom: 15px;
-        }
+.filters button.active{
+    background:#d70f64;
+    color:white;
+}
 
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
+.restaurant-list, .food-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    justify-content:center;
+}
 
-        .btn {
-            padding: 10px 25px;
-            background: #ff4d4d;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-        }
+.card{
+    background:white;
+    width:250px;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 4px 8px rgba(0,0,0,0.1);
+    cursor:pointer;
+}
 
-        .menu {
-            padding: 50px 20px;
-            text-align: center;
-        }
+.card img{
+    width:100%;
+    border-radius:10px;
+}
 
-        .menu h2 {
-            margin-bottom: 30px;
-        }
+.card h3{
+    margin:10px 0 5px;
+}
 
-        .menu-items {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
+.price{
+    color:#d70f64;
+    font-weight:bold;
+}
 
-        .card {
-            background: white;
-            width: 250px;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
+.cart{
+    position:fixed;
+    right:0;
+    top:0;
+    width:300px;
+    height:100%;
+    background:white;
+    box-shadow:-2px 0 8px rgba(0,0,0,0.2);
+    padding:20px;
+    overflow:auto;
+}
 
-        .card img {
-            width: 100%;
-            border-radius: 10px;
-        }
+.cart h2{
+    margin-top:0;
+}
 
-        .card h3 {
-            margin: 10px 0;
-        }
+.cart-item{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:10px;
+}
 
-        footer {
-            background: #222;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            margin-top: 40px;
-        }
+.order-btn{
+    background:#d70f64;
+    color:white;
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
 
-        @media (max-width: 768px) {
-            .hero h2 {
-                font-size: 28px;
-            }
+.login-modal{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    display:none;
+    justify-content:center;
+    align-items:center;
+}
 
-            header {
-                flex-direction: column;
-            }
+.login-box{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    width:300px;
+}
 
-            nav {
-                margin-top: 10px;
-            }
-        }
-    </style>
+.login-box input{
+    width:100%;
+    padding:8px;
+    margin-bottom:10px;
+}
+</style>
 </head>
 
 <body>
@@ -135,48 +153,134 @@
 <header>
     <h1>Food4U</h1>
     <nav>
-        <a href="#">Home</a>
-        <a href="#menu">Menu</a>
-        <a href="#">Contact</a>
+        <button onclick="openLogin()">Login</button>
     </nav>
 </header>
 
-<section class="hero">
-    <div class="hero-content">
-        <h2>Delicious Food Delivered To You</h2>
-        <p>Fast delivery | Fresh ingredients | Best prices</p>
-        <a href="#menu" class="btn">Order Now</a>
+<div class="container">
+
+    <div class="filters">
+        <button onclick="filterMode('All')" class="active">All</button>
+        <button onclick="filterMode('Delivery')">Delivery</button>
+        <button onclick="filterMode('Dine-In')">Dine-In</button>
+        <button onclick="filterMode('Pickup')">Pickup</button>
     </div>
-</section>
 
-<section class="menu" id="menu">
-    <h2>Our Popular Items</h2>
-    <div class="menu-items">
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd" alt="Burger">
-            <h3>Classic Burger</h3>
-            <p>$5.99</p>
-        </div>
+    <div class="restaurant-list" id="restaurants"></div>
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c" alt="Pizza">
-            <h3>Cheese Pizza</h3>
-            <p>$8.99</p>
-        </div>
+    <div class="food-list" id="foods" style="display:none;"></div>
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1" alt="Pasta">
-            <h3>Italian Pasta</h3>
-            <p>$7.49</p>
-        </div>
+</div>
+
+<div class="cart">
+    <h2>🛒 Cart</h2>
+    <div id="cartItems"></div>
+    <hr>
+    <p>Total: ৳ <span id="total">0</span></p>
+    <button class="order-btn" onclick="placeOrder()">Place Order</button>
+</div>
+
+<div class="login-modal" id="loginModal">
+    <div class="login-box">
+        <h3>Login</h3>
+        <input type="text" placeholder="Email">
+        <input type="password" placeholder="Password">
+        <button class="order-btn" onclick="closeLogin()">Login</button>
     </div>
-</section>
+</div>
 
-<footer>
-    <p>© 2026 Food4U | All Rights Reserved</p>
-</footer>
+<script>
+let restaurants = [
+    {name:"Dhaka Biriyani House", mode:"Delivery"},
+    {name:"Chittagong Grill", mode:"Dine-In"},
+    {name:"Burger Express BD", mode:"Pickup"}
+];
+
+let foods = [
+    {name:"Kacchi Biriyani", price:350},
+    {name:"Beef Burger", price:250},
+    {name:"Chicken Pizza", price:500}
+];
+
+let cart = [];
+
+function loadRestaurants(filter="All"){
+    let container = document.getElementById("restaurants");
+    container.innerHTML="";
+    document.getElementById("foods").style.display="none";
+    container.style.display="flex";
+
+    restaurants.filter(r=>filter==="All"||r.mode===filter)
+    .forEach(r=>{
+        container.innerHTML+=`
+        <div class="card" onclick="showFoods()">
+            <h3>${r.name}</h3>
+            <p>${r.mode}</p>
+        </div>`;
+    });
+}
+
+function showFoods(){
+    document.getElementById("restaurants").style.display="none";
+    let foodDiv=document.getElementById("foods");
+    foodDiv.innerHTML="";
+    foodDiv.style.display="flex";
+
+    foods.forEach(f=>{
+        foodDiv.innerHTML+=`
+        <div class="card">
+            <h3>${f.name}</h3>
+            <p class="price">৳ ${f.price}</p>
+            <button onclick="addToCart('${f.name}',${f.price})">Add</button>
+        </div>`;
+    });
+}
+
+function addToCart(name,price){
+    cart.push({name,price});
+    updateCart();
+}
+
+function updateCart(){
+    let cartDiv=document.getElementById("cartItems");
+    cartDiv.innerHTML="";
+    let total=0;
+    cart.forEach(item=>{
+        total+=item.price;
+        cartDiv.innerHTML+=`
+        <div class="cart-item">
+            <span>${item.name}</span>
+            <span>৳ ${item.price}</span>
+        </div>`;
+    });
+    document.getElementById("total").innerText=total;
+}
+
+function placeOrder(){
+    alert("Order Placed Successfully!");
+    cart=[];
+    updateCart();
+}
+
+function filterMode(mode){
+    document.querySelectorAll(".filters button").forEach(btn=>btn.classList.remove("active"));
+    event.target.classList.add("active");
+    loadRestaurants(mode);
+}
+
+function openLogin(){
+    document.getElementById("loginModal").style.display="flex";
+}
+
+function closeLogin(){
+    document.getElementById("loginModal").style.display="none";
+}
+
+loadRestaurants();
+</script>
 
 </body>
 </html>
+
 
 
