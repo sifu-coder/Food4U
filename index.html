@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Food4U - Premium Food Delivery</title>
-
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -17,19 +16,27 @@
     </nav>
 </header>
 
-<div class="container">
-
-    <div class="filters">
-        <button onclick="filterMode('All')" class="active">All</button>
-        <button onclick="filterMode('Delivery')">Delivery</button>
-        <button onclick="filterMode('Dine-In')">Dine-In</button>
-        <button onclick="filterMode('Pickup')">Pickup</button>
+<!-- BIG SERVICE BOXES -->
+<section class="service-section">
+    <div class="service-box delivery" onclick="filterMode('Delivery')">
+        <h2>🚚 Food Delivery</h2>
+        <p>Get food delivered to your doorstep</p>
     </div>
 
+    <div class="service-box dinein" onclick="filterMode('Dine-In')">
+        <h2>🍽️ Dine-In</h2>
+        <p>Reserve & eat at restaurant</p>
+    </div>
+
+    <div class="service-box pickup" onclick="filterMode('Pickup')">
+        <h2>🛍️ Pickup</h2>
+        <p>Order & collect yourself</p>
+    </div>
+</section>
+
+<div class="container">
     <div class="restaurant-list" id="restaurants"></div>
-
     <div class="food-list hidden" id="foods"></div>
-
 </div>
 
 <div class="cart">
@@ -50,9 +57,9 @@
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
+
 
 
 
