@@ -1,0 +1,68 @@
+let cart = [];
+let total = 0;
+
+const menus = {
+    "Pizza Palace": [
+        {name: "Margherita Pizza", price: 400},
+        {name: "Pepperoni Pizza", price: 500}
+    ],
+    "Spicy Hub": [
+        {name: "Chicken Biryani", price: 300},
+        {name: "Chow Mein", price: 250}
+    ],
+    "Burger Town": [
+        {name: "Beef Burger", price: 200},
+        {name: "French Fries", price: 150}
+    ]
+};
+
+function showSection(type){
+    alert(type + " option selected");
+}
+
+function showMenu(restaurant){
+    document.getElementById("menuSection").classList.remove("hidden");
+    document.getElementById("menuTitle").innerText = restaurant + " Menu";
+
+    const foodList = document.getElementById("foodList");
+    foodList.innerHTML = "";
+
+    menus[restaurant].forEach(item => {
+        foodList.innerHTML += `
+            <div class="card">
+                <h3>${item.name}</h3>
+                <p>৳${item.price}</p>
+                <button onclick="addToCart('${item.name}', ${item.price})">Add to Cart</button>
+            </div>
+        `;
+    });
+}
+
+function addToCart(name, price){
+    cart.push({name, price});
+    total += price;
+
+    const cartItems = document.getElementById("cartItems");
+    cartItems.innerHTML += `<li>${name} - ৳${price}</li>`;
+    document.getElementById("total").innerText = total;
+}
+
+function placeOrder(){
+    if(cart.length === 0){
+        alert("Your cart is empty!");
+        return;
+    }
+    alert("Order Placed Successfully!");
+    cart = [];
+    total = 0;
+    document.getElementById("cartItems").innerHTML = "";
+    document.getElementById("total").innerText = 0;
+}
+
+function openLogin(){
+    document.getElementById("loginModal").classList.remove("hidden");
+}
+
+function closeLogin(){
+    document.getElementById("loginModal").classList.add("hidden");
+}

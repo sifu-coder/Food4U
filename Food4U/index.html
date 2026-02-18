@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Food4U - Order Your Favourite Food</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Food4U</h1>
+    <nav>
+        <button onclick="showSection('delivery')">Food Delivery</button>
+        <button onclick="showSection('dinein')">Dine-IN</button>
+        <button onclick="showSection('pickup')">Pickup</button>
+        <button onclick="openLogin()">Login</button>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2>Delicious Food Delivered To Your Door</h2>
+    <p>Order from your favorite restaurants</p>
+</section>
+
+<section id="restaurants" class="restaurants">
+    <h2>Available Restaurants</h2>
+    <div class="card-container">
+
+        <div class="card">
+            <h3>Pizza Palace</h3>
+            <p>Italian • Fast Food</p>
+            <button onclick="showMenu('Pizza Palace')">View Menu</button>
+        </div>
+
+        <div class="card">
+            <h3>Spicy Hub</h3>
+            <p>Indian • Chinese</p>
+            <button onclick="showMenu('Spicy Hub')">View Menu</button>
+        </div>
+
+        <div class="card">
+            <h3>Burger Town</h3>
+            <p>Burger • Snacks</p>
+            <button onclick="showMenu('Burger Town')">View Menu</button>
+        </div>
+
+    </div>
+</section>
+
+<section id="menuSection" class="menu hidden">
+    <h2 id="menuTitle"></h2>
+    <div id="foodList" class="card-container"></div>
+</section>
+
+<section class="cart">
+    <h2>Your Order</h2>
+    <ul id="cartItems"></ul>
+    <h3>Total: ৳<span id="total">0</span></h3>
+    <button onclick="placeOrder()">Place Order</button>
+</section>
+
+<div id="loginModal" class="modal hidden">
+    <div class="modal-content">
+        <h2>Login / Signup</h2>
+        <input type="text" placeholder="Username">
+        <input type="password" placeholder="Password">
+        <button onclick="closeLogin()">Submit</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
