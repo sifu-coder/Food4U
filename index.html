@@ -3,150 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Food4U - Order Food Online</title>
+<title>Food4U - Premium Food Delivery</title>
+
 <link rel="stylesheet" href="style.css">
-</head>
-<style>
-body{
-    margin:0;
-    font-family:Arial, sans-serif;
-    background:#f4f4f4;
-}
-
-header{
-    background:#d70f64;
-    color:white;
-    padding:15px 40px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-header h1{
-    margin:0;
-}
-
-nav button{
-    background:white;
-    color:#d70f64;
-    border:none;
-    padding:8px 15px;
-    margin-left:10px;
-    border-radius:5px;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-.container{
-    padding:30px;
-}
-
-.filters{
-    text-align:center;
-    margin-bottom:20px;
-}
-
-.filters button{
-    padding:10px 20px;
-    margin:5px;
-    border:none;
-    border-radius:20px;
-    cursor:pointer;
-    background:#ddd;
-}
-
-.filters button.active{
-    background:#d70f64;
-    color:white;
-}
-
-.restaurant-list, .food-list{
-    display:flex;
-    flex-wrap:wrap;
-    gap:20px;
-    justify-content:center;
-}
-
-.card{
-    background:white;
-    width:250px;
-    padding:15px;
-    border-radius:10px;
-    box-shadow:0 4px 8px rgba(0,0,0,0.1);
-    cursor:pointer;
-}
-
-.card img{
-    width:100%;
-    border-radius:10px;
-}
-
-.card h3{
-    margin:10px 0 5px;
-}
-
-.price{
-    color:#d70f64;
-    font-weight:bold;
-}
-
-.cart{
-    position:fixed;
-    right:0;
-    top:0;
-    width:300px;
-    height:100%;
-    background:white;
-    box-shadow:-2px 0 8px rgba(0,0,0,0.2);
-    padding:20px;
-    overflow:auto;
-}
-
-.cart h2{
-    margin-top:0;
-}
-
-.cart-item{
-    display:flex;
-    justify-content:space-between;
-    margin-bottom:10px;
-}
-
-.order-btn{
-    background:#d70f64;
-    color:white;
-    width:100%;
-    padding:10px;
-    border:none;
-    border-radius:5px;
-    cursor:pointer;
-}
-
-.login-modal{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.6);
-    display:none;
-    justify-content:center;
-    align-items:center;
-}
-
-.login-box{
-    background:white;
-    padding:30px;
-    border-radius:10px;
-    width:300px;
-}
-
-.login-box input{
-    width:100%;
-    padding:8px;
-    margin-bottom:10px;
-}
-</style>
 </head>
 
 <body>
@@ -169,7 +28,7 @@ nav button{
 
     <div class="restaurant-list" id="restaurants"></div>
 
-    <div class="food-list" id="foods" style="display:none;"></div>
+    <div class="food-list hidden" id="foods"></div>
 
 </div>
 
@@ -181,7 +40,7 @@ nav button{
     <button class="order-btn" onclick="placeOrder()">Place Order</button>
 </div>
 
-<div class="login-modal" id="loginModal">
+<div class="login-modal hidden" id="loginModal">
     <div class="login-box">
         <h3>Login</h3>
         <input type="text" placeholder="Email">
@@ -190,98 +49,11 @@ nav button{
     </div>
 </div>
 
-<script>
-let restaurants = [
-    {name:"Dhaka Biriyani House", mode:"Delivery"},
-    {name:"Chittagong Grill", mode:"Dine-In"},
-    {name:"Burger Express BD", mode:"Pickup"}
-];
-
-let foods = [
-    {name:"Kacchi Biriyani", price:350},
-    {name:"Beef Burger", price:250},
-    {name:"Chicken Pizza", price:500}
-];
-
-let cart = [];
-
-function loadRestaurants(filter="All"){
-    let container = document.getElementById("restaurants");
-    container.innerHTML="";
-    document.getElementById("foods").style.display="none";
-    container.style.display="flex";
-
-    restaurants.filter(r=>filter==="All"||r.mode===filter)
-    .forEach(r=>{
-        container.innerHTML+=`
-        <div class="card" onclick="showFoods()">
-            <h3>${r.name}</h3>
-            <p>${r.mode}</p>
-        </div>`;
-    });
-}
-
-function showFoods(){
-    document.getElementById("restaurants").style.display="none";
-    let foodDiv=document.getElementById("foods");
-    foodDiv.innerHTML="";
-    foodDiv.style.display="flex";
-
-    foods.forEach(f=>{
-        foodDiv.innerHTML+=`
-        <div class="card">
-            <h3>${f.name}</h3>
-            <p class="price">৳ ${f.price}</p>
-            <button onclick="addToCart('${f.name}',${f.price})">Add</button>
-        </div>`;
-    });
-}
-
-function addToCart(name,price){
-    cart.push({name,price});
-    updateCart();
-}
-
-function updateCart(){
-    let cartDiv=document.getElementById("cartItems");
-    cartDiv.innerHTML="";
-    let total=0;
-    cart.forEach(item=>{
-        total+=item.price;
-        cartDiv.innerHTML+=`
-        <div class="cart-item">
-            <span>${item.name}</span>
-            <span>৳ ${item.price}</span>
-        </div>`;
-    });
-    document.getElementById("total").innerText=total;
-}
-
-function placeOrder(){
-    alert("Order Placed Successfully!");
-    cart=[];
-    updateCart();
-}
-
-function filterMode(mode){
-    document.querySelectorAll(".filters button").forEach(btn=>btn.classList.remove("active"));
-    event.target.classList.add("active");
-    loadRestaurants(mode);
-}
-
-function openLogin(){
-    document.getElementById("loginModal").style.display="flex";
-}
-
-function closeLogin(){
-    document.getElementById("loginModal").style.display="none";
-}
-
-loadRestaurants();
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
+
 
 
 
