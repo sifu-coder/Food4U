@@ -1,101 +1,203 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f5f5f5;
+
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
-    background: #ff4d4d;
-    color: white;
+body{
+    background: linear-gradient(135deg,#fff0f5,#f3f8ff);
+    min-height:100vh;
 }
 
-header h1 {
-    margin: 0;
+/* Header */
+header{
+    background: linear-gradient(90deg,#ff0066,#ff4d4d);
+    color:white;
+    padding:20px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 4px 20px rgba(0,0,0,0.2);
 }
 
-nav button {
-    margin-left: 10px;
-    padding: 8px 15px;
-    border: none;
-    background: white;
-    color: #ff4d4d;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 5px;
+header h1{
+    font-size:26px;
+    font-weight:700;
 }
 
-.hero {
-    text-align: center;
-    padding: 60px;
-    background: linear-gradient(to right, #ff4d4d, #ff944d);
-    color: white;
+nav button{
+    background:white;
+    color:#ff0066;
+    border:none;
+    padding:8px 18px;
+    margin-left:10px;
+    border-radius:30px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
 }
 
-.restaurants, .menu, .cart {
-    padding: 40px;
-    text-align: center;
+nav button:hover{
+    background:#ffe6f0;
 }
 
-.card-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
+/* Container */
+.container{
+    padding:40px;
 }
 
-.card {
-    background: white;
-    padding: 20px;
-    width: 250px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+/* Filter Buttons */
+.filters{
+    text-align:center;
+    margin-bottom:30px;
 }
 
-.card button {
-    background: #ff4d4d;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    cursor: pointer;
-    border-radius: 5px;
+.filters button{
+    padding:10px 25px;
+    margin:5px;
+    border:none;
+    border-radius:30px;
+    background:#e0e0e0;
+    cursor:pointer;
+    transition:0.3s;
+    font-weight:500;
 }
 
-.cart ul {
-    list-style: none;
-    padding: 0;
+.filters button.active,
+.filters button:hover{
+    background:#ff0066;
+    color:white;
 }
 
-.cart button {
-    padding: 10px 20px;
-    background: green;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
+/* Cards */
+.restaurant-list,
+.food-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:25px;
+    justify-content:center;
 }
 
-.hidden {
-    display: none;
+.card{
+    background:rgba(255,255,255,0.7);
+    backdrop-filter: blur(10px);
+    width:260px;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+    transition:0.3s;
 }
 
-.modal {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(0,0,0,0.2);
 }
 
-.modal-content {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
+.card img{
+    width:100%;
+    height:160px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:15px;
+}
+
+.card h3{
+    margin-bottom:5px;
+    font-size:18px;
+}
+
+.card p{
+    font-size:14px;
+    color:#555;
+}
+
+.price{
+    color:#ff0066;
+    font-weight:600;
+    margin:5px 0;
+}
+
+.card button{
+    width:100%;
+    padding:8px;
+    border:none;
+    border-radius:20px;
+    background:linear-gradient(90deg,#ff0066,#ff4d4d);
+    color:white;
+    cursor:pointer;
+    margin-top:8px;
+    transition:0.3s;
+}
+
+.card button:hover{
+    opacity:0.85;
+}
+
+/* Cart */
+.cart{
+    position:fixed;
+    right:0;
+    top:0;
+    width:320px;
+    height:100%;
+    background:white;
+    padding:20px;
+    box-shadow:-4px 0 20px rgba(0,0,0,0.2);
+    overflow-y:auto;
+}
+
+.cart h2{
+    margin-bottom:15px;
+}
+
+.cart-item{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:10px;
+    font-size:14px;
+}
+
+.order-btn{
+    background:linear-gradient(90deg,#ff0066,#ff4d4d);
+    color:white;
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:30px;
+    margin-top:15px;
+    cursor:pointer;
+}
+
+/* Login Modal */
+.login-modal{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    display:none;
+    justify-content:center;
+    align-items:center;
+}
+
+.login-box{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    width:300px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+.login-box input{
+    width:100%;
+    padding:10px;
+    margin-bottom:10px;
+    border-radius:10px;
+    border:1px solid #ccc;
 }
