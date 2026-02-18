@@ -2,72 +2,181 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Food4U - Order Your Favourite Food</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Food4U - Fresh & Fast Food Delivery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f8f8f8;
+        }
+
+        header {
+            background: #ff4d4d;
+            color: white;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 24px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        .hero {
+            height: 90vh;
+            background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero-content {
+            background: rgba(0,0,0,0.6);
+            padding: 40px;
+            border-radius: 10px;
+        }
+
+        .hero h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 10px 25px;
+            background: #ff4d4d;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .menu {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .menu h2 {
+            margin-bottom: 30px;
+        }
+
+        .menu-items {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            width: 250px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .card h3 {
+            margin: 10px 0;
+        }
+
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 28px;
+            }
+
+            header {
+                flex-direction: column;
+            }
+
+            nav {
+                margin-top: 10px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
 <header>
     <h1>Food4U</h1>
     <nav>
-        <button onclick="showSection('delivery')">Food Delivery</button>
-        <button onclick="showSection('dinein')">Dine-IN</button>
-        <button onclick="showSection('pickup')">Pickup</button>
-        <button onclick="openLogin()">Login</button>
+        <a href="#">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#">Contact</a>
     </nav>
 </header>
 
 <section class="hero">
-    <h2>Delicious Food Delivered To Your Door</h2>
-    <p>Order from your favorite restaurants</p>
-</section>
-
-<section id="restaurants" class="restaurants">
-    <h2>Available Restaurants</h2>
-    <div class="card-container">
-
-        <div class="card">
-            <h3>Pizza Palace</h3>
-            <p>Italian • Fast Food</p>
-            <button onclick="showMenu('Pizza Palace')">View Menu</button>
-        </div>
-
-        <div class="card">
-            <h3>Spicy Hub</h3>
-            <p>Indian • Chinese</p>
-            <button onclick="showMenu('Spicy Hub')">View Menu</button>
-        </div>
-
-        <div class="card">
-            <h3>Burger Town</h3>
-            <p>Burger • Snacks</p>
-            <button onclick="showMenu('Burger Town')">View Menu</button>
-        </div>
-
+    <div class="hero-content">
+        <h2>Delicious Food Delivered To You</h2>
+        <p>Fast delivery | Fresh ingredients | Best prices</p>
+        <a href="#menu" class="btn">Order Now</a>
     </div>
 </section>
 
-<section id="menuSection" class="menu hidden">
-    <h2 id="menuTitle"></h2>
-    <div id="foodList" class="card-container"></div>
-</section>
+<section class="menu" id="menu">
+    <h2>Our Popular Items</h2>
+    <div class="menu-items">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd" alt="Burger">
+            <h3>Classic Burger</h3>
+            <p>$5.99</p>
+        </div>
 
-<section class="cart">
-    <h2>Your Order</h2>
-    <ul id="cartItems"></ul>
-    <h3>Total: ৳<span id="total">0</span></h3>
-    <button onclick="placeOrder()">Place Order</button>
-</section>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c" alt="Pizza">
+            <h3>Cheese Pizza</h3>
+            <p>$8.99</p>
+        </div>
 
-<div id="loginModal" class="modal hidden">
-    <div class="modal-content">
-        <h2>Login / Signup</h2>
-        <input type="text" placeholder="Username">
-        <input type="password" placeholder="Password">
-        <button onclick="closeLogin()">Submit</button>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1" alt="Pasta">
+            <h3>Italian Pasta</h3>
+            <p>$7.49</p>
+        </div>
     </div>
-</div>
+</section>
 
-<script src="script.js"></script>
+<footer>
+    <p>© 2026 Food4U | All Rights Reserved</p>
+</footer>
+
 </body>
 </html>
+
+
