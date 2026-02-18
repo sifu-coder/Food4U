@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Food4U - Premium Food Delivery</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
 <header>
@@ -16,7 +15,6 @@
     </nav>
 </header>
 
-<!-- BIG SERVICE BOXES -->
 <section class="service-section">
     <div class="service-box delivery" onclick="filterMode('Delivery')">
         <h2>🚚 Food Delivery</h2>
@@ -42,7 +40,7 @@
 <div class="cart">
     <h2>🛒 Cart</h2>
     <div id="cartItems"></div>
-    <hr>
+    <hr />
     <p>Total: ৳ <span id="total">0</span></p>
     <button class="order-btn" onclick="placeOrder()">Place Order</button>
 </div>
@@ -50,16 +48,16 @@
 <div class="login-modal hidden" id="loginModal">
     <div class="login-box">
         <h3>Login</h3>
-        <input type="text" placeholder="Email">
-        <input type="password" placeholder="Password">
+        <input type="text" placeholder="Email" />
+        <input type="password" placeholder="Password" />
         <button class="order-btn" onclick="closeLogin()">Login</button>
     </div>
 </div>
 
 <script src="script.js"></script>
+
 </body>
 </html>
-
 
 
 
